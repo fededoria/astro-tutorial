@@ -1,4 +1,6 @@
 ---
+import Navigation from "../components/Navigation.astro";
+import Footer from "../components/Footer.astro";
 import "../styles/global.css";
 
 const pageTitle = "About Me";
@@ -42,9 +44,7 @@ const textCase = "uppercase";
         </style>
     </head>
     <body>
-        <a href="/">Home</a>
-        <a href="/about/">About</a>
-        <a href="/blog/">Blog</a>
+        <Navigation />
 
         <h1>My Astro Site</h1>
         <h1>{pageTitle}</h1>
@@ -91,5 +91,6 @@ const textCase = "uppercase";
                 <p>My goal is not 3 days</p>
             )
         }
+        <Footer />
     </body>
 </html>

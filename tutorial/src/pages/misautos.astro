@@ -1,0 +1,125 @@
+---
+import Navigation from "../components/Navigation.astro";
+import Footer from "../components/Footer.astro";
+import "../styles/global.css";
+
+const pageTitle = "Mis Autos";
+
+const autos = [
+    {
+        marca: "Ferrari",
+        modelo: "Maranello",
+        potencia: 120,
+        speed: 280,
+        pais: "Italia",
+        precio: 250000,
+    },
+    {
+        marca: "Ford",
+        modelo: "Ranger",
+        potencia: 120,
+        speed: 140,
+        pais: "Estados Unidos",
+        precio: 43000,
+    },
+    {
+        marca: "Toyota",
+        modelo: "Prius",
+        potencia: 120,
+        speed: 120,
+        pais: "Japón",
+        precio: 25000,
+    },
+    {
+        marca: "Chevrolet",
+        modelo: "Camaro",
+        potencia: 120,
+        speed: 240,
+        pais: "Estados Unidos",
+        precio: 55000,
+    },
+    {
+        marca: "BYD",
+        modelo: "Shark",
+        potencia: 120,
+        speed: 130,
+        pais: "China",
+        precio: 53000,
+    },
+    {
+        marca: "Lamborghini",
+        modelo: "Aventador",
+        potencia: 120,
+        speed: 310,
+        pais: "Italia",
+        precio: 275000,
+    },
+    {
+        marca: "Kia",
+        modelo: "K3",
+        potencia: 120,
+        speed: 220,
+        pais: "Corea del Sur",
+        precio: 33000,
+    },
+    {
+        marca: "Mercedes Benz",
+        modelo: "SL 300",
+        potencia: 125,
+        speed: 230,
+        pais: "Alemania",
+        precio: 68000,
+    },
+    {
+        marca: "Volkswagen",
+        modelo: "Golf GTI",
+        potencia: 170,
+        speed: 265,
+        pais: "Alemani",
+        precio: 55000,
+    },
+    {
+        marca: "Fiat",
+        modelo: "Fastback",
+        potencia: 110,
+        speed: 205,
+        pais: "Italia",
+        precio: 48000,
+    },
+];
+---
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>{pageTitle}</title>
+    </head>
+    <body>
+        <Navigation />
+        <h1>My Astro Site</h1>
+        <h2>{pageTitle}</h2>
+        <p>
+            Vamos a renderizar una lista de elementos usando filtros y métodos
+            map. Los datos están hardcodeados en el frontmatter (bloque de
+            código) de la página
+        </p>
+
+        <!-- Acá Se recorre dos veces el array, primero filtra y después renderiza usando map -->
+        <h3>Autos Italianos</h3>
+        <ul>
+            {
+                autos
+                    .filter((italianos) => italianos.pais === "Italia")
+                    .map((i) => <li>{i.modelo}</li>)
+            }
+        </ul>
+        <!-- Acá filtramos y renderizamos en un sólo paso usano ternario -->
+        <h3>Autos más de 200 km/h</h3>
+        <ul>
+            {autos.map((a) => (a.speed > 200 ? <li>{a.modelo}</li> : null))}
+        </ul>
+        <Footer />
+    </body>
+</html>

@@ -1,7 +1,5 @@
 ---
-import Navigation from "../components/Navigation.astro";
-import Footer from "../components/Footer.astro";
-import "../styles/global.css";
+import BaseLayout from "../layouts/BaseLayout.astro";
 
 const pageTitle = "Mis Autos";
 
@@ -9,7 +7,7 @@ const autos = [
     {
         marca: "Ferrari",
         modelo: "Maranello",
-        potencia: 120,
+        potencia: 450,
         speed: 280,
         pais: "Italia",
         precio: 250000,
@@ -33,7 +31,7 @@ const autos = [
     {
         marca: "Chevrolet",
         modelo: "Camaro",
-        potencia: 120,
+        potencia: 230,
         speed: 240,
         pais: "Estados Unidos",
         precio: 55000,
@@ -49,7 +47,7 @@ const autos = [
     {
         marca: "Lamborghini",
         modelo: "Aventador",
-        potencia: 120,
+        potencia: 380,
         speed: 310,
         pais: "Italia",
         precio: 275000,
@@ -89,37 +87,39 @@ const autos = [
 ];
 ---
 
-<!doctype html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>{pageTitle}</title>
-    </head>
-    <body>
-        <Navigation />
-        <h1>My Astro Site</h1>
-        <h2>{pageTitle}</h2>
-        <p>
-            Vamos a renderizar una lista de elementos usando filtros y métodos
-            map. Los datos están hardcodeados en el frontmatter (bloque de
-            código) de la página
-        </p>
+<BaseLayout pageTitle={pageTitle}>
+    <h2>My subtitle</h2>
+    <p>
+        Vamos a renderizar una lista de elementos usando filtros y métodos map.
+        Los datos están hardcodeados en el frontmatter (bloque de código) de la
+        página
+    </p>
 
-        <!-- Acá Se recorre dos veces el array, primero filtra y después renderiza usando map -->
-        <h3>Autos Italianos</h3>
-        <ul>
-            {
-                autos
-                    .filter((italianos) => italianos.pais === "Italia")
-                    .map((i) => <li>{i.modelo}</li>)
-            }
-        </ul>
-        <!-- Acá filtramos y renderizamos en un sólo paso usano ternario -->
-        <h3>Autos más de 200 km/h</h3>
-        <ul>
-            {autos.map((a) => (a.speed > 200 ? <li>{a.modelo}</li> : null))}
-        </ul>
-        <Footer />
-    </body>
-</html>
+    <!-- Acá Se recorre dos veces el array, primero filtra y después renderiza usando map -->
+    <h3>Autos Italianos</h3>
+    <ul>
+        {
+            autos
+                .filter((italianos) => italianos.pais === "Italia")
+                .map((i) => <li>{i.modelo}</li>)
+        }
+    </ul>
+    <!-- Acá filtramos y renderizamos en un sólo paso usano ternario -->
+    <h3>Autos más de 200 km/h</h3>
+    <ul>
+        {autos.map((a) => (a.speed > 200 ? <li>{a.modelo}</li> : null))}
+    </ul>
+    <h3>Autos más potentes</h3>
+    <ul>
+        {
+            autos
+                .sort((a, b) => b.potencia - a.potencia)
+                .slice(0, 3)
+                .map((p) => (
+                    <li>
+                        {`${p.marca} modelo ${p.modelo} entrega ${p.potencia} CV`}
+                    </li>
+                ))
+        }
+    </ul>
+</BaseLayout>

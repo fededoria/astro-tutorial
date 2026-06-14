@@ -1,0 +1,40 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const pageTitle = "Buenos Aires";
+const buenosAires = {
+    pais: "Argentina",
+    fundacion: 1536,
+    clima: "Subtropical húmedo",
+    gentilicio: "porteño",
+};
+---
+
+<BaseLayout pageTitle={pageTitle}>
+    <style>
+        .parrafo-buenos-aires {
+            background-color: skyblue;
+            font-size: 1.5rem;
+            font-style: italic;
+            padding: 1rem;
+            border-radius: 1rem;
+        }
+    </style>
+    <h2>La Madrid de Sudamérica</h2>
+
+    <p>
+        Buenos Aires es la gran capital cosmopolita de Argentina. Su centro es
+        la Plaza de Mayo, rodeada de imponentes edificios del siglo XIX,
+        incluida la Casa Rosada, el icónico palacio presidencial que tiene
+        varios balcones. Entre otras atracciones importantes, se incluyen el
+        Teatro Colón, un lujoso teatro de ópera de 1908 con cerca de 2,500
+        asientos, y el moderno museo MALBA, que exhibe arte latinoamericano.
+    </p>
+
+    <p class="parrafo-buenos-aires">
+        La ciudad de Buenos Aires es la capital de {buenosAires.pais}, fue
+        fundada en el año {buenosAires.fundacion}, tiene un clima {
+            buenosAires.clima
+        } y su gentilicio es "{buenosAires.gentilicio}".
+    </p>
+</BaseLayout>

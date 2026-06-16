@@ -1,5 +1,4 @@
 ---
-layout: ../../layouts/MarkdownPostLayout.astro
 title: My Fifth Post
 author: Rocky Balboa
 description: "Este es un post de práctica"

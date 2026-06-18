@@ -1,4 +1,5 @@
 ---
+import PriceCalculator from "../components/PriceCalculator.svelte";
 import BaseLayout from "../layouts/BaseLayout.astro";
 
 const pageTitle = "Mis Autos";
@@ -122,4 +123,15 @@ const autos = [
                 ))
         }
     </ul>
+    <div class="calculator">
+        <h2>Price Calculator</h2>
+        <PriceCalculator client:load />
+    </div>
+    <style>
+        .calculator {
+            background-color: rgb(68, 21, 112);
+            padding: 2rem;
+            border-radius: 0.5rem;
+        }
+    </style>
 </BaseLayout>
